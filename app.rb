@@ -63,5 +63,6 @@ end
 post '/details/:post_id' do
 	post_id = params[:post_id]
 	content = params[:content]
-	erb "You taped comment #{content}, post: #{post_id}"
+	@db.execute 'insert into Comments(post_id,content,created_date) values(?,?, datetime())',[post_id,content]
+	redirect to '/details/' + post_id
 end
