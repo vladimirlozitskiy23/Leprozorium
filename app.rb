@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 get '/' do
+	@result = @db.execute 'select * from Posts order by id desc'
 	erb :index
 end
 
