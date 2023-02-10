@@ -5,7 +5,7 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"
+	erb :index
 end
 
 def init_db
@@ -33,11 +33,11 @@ get '/new' do
 end
 
 post '/new' do
-  @content = params[:content]
-	if @content.length <= 0
+  content = params[:content]
+	if content.length <= 0
 		@error = 'Type text'
 	end
-	@db.execute 'insert into Posts(@content,created_date) values(?, datetime())',[@content]
+	@db.execute 'insert into Posts(content,created_date) values(?, datetime())',[content]
 	erb :new
 
 end
