@@ -5,3 +5,14 @@
   <br/>
   <%= @row['created_date'] %>
 </p>
+ <h4>Comments:</h4>
+
+ <form class="" action="/details/<%= @row['id']%>" method="POST">
+
+ <div class="mb-3">
+   <label for="exampleFormControlTextarea1" class="form-label">New comment:</label>
+   <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Type new comment"></textarea>
+ </div>
+ <br/>
+ <button type="submit" class="btn btn-primary">Create</button>
+ </form>
