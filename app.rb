@@ -51,3 +51,9 @@ get '/details/:post_id' do
 	@row = results[0]
 	erb :details
 end
+
+post '/details/:post_id' do
+	post_id = params[:post_id]
+	content = params[:content]
+	erb "You taped comment #{content}, post: #{post_id}"
+end
